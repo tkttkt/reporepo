@@ -29,7 +29,7 @@ let Article = require('./models/article');
 
 // Load View Engine
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.use(express.static(__dirname + '/views'));
 
 // Body Parser Middleware
 // parse application/x-www-form-urlencoded
@@ -83,13 +83,14 @@ app.get('*', function(req, res, next){
   next();
 });
 
+app.set('view engine', 'pug');
 // Home Route
-app.get('/', function(req, res){
+app.get('/mogin', function(req, res){
   Article.find({}, function(err, articles){
     if(err){
       console.log(err);
     } else {
-      res.render('index.html', {
+      res.render('index2', {
         title:'Articles',
         articles: articles
       });
@@ -104,6 +105,6 @@ app.use('/articles', articles);
 app.use('/users', users);
 
 // Start Server
-app.listen(80, function(){
-  console.log('Server started on port 80...');
+app.listen(3380, function(){
+  console.log('Server started on port 3380...');
 });
