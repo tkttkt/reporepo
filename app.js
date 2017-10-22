@@ -104,6 +104,6 @@ app.use('/articles', articles);
 app.use('/users', users);
 
 // Start Server
-app.listen(3110, function(){
-  console.log('Server started on port 3110...');
+app.listen(80, function(){
+  console.log('Server started on port 80...');
 });
